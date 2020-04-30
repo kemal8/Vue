@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS Tutorial</title>
+    <link href="style.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="vue-app">
+
+        <h1>{{ greet('afternoon') }}</h1>
+        <p>Emp name: {{name}}</p>
+        <p>Emp job role: {{job}}</p>
+
+        <br>
+
+        <h1>{{databindtitle}}</h1> <br>
+        <a v-bind:href="website">clik for data binding</a>
+        <input type="text" v-bind:value="job"/>
+        <br>
+        <p v-html="websiteTag"></p>
+    
+    </div>
+
+    <div id="vue-events">
+
+        <h1>Events</h1>
+        <button @click="add(1)">Add a year</button>
+        <button v-on:click="subcract(1)">Subcract a year</button>
+        <button @click="add(10)">Add 10 years</button>
+        <button v-on:click="subcract(10)">Subcract 10 years</button>
+        <button v-on:dblclick="add(20)">Add 20 years</button>
+        <button v-on:dblclick="subcract(20)">Subcract 20 years</button>
+        <p>My age is {{age}}</p>
+        <div id="canvas" v-on:mousemove="updateXY">{{x}},{{y}}</div>
+        <a v-on:click.prevent="click" href="https://kemal8.github.io/nxtotravel/">Go to my web site</a>
+
+    </div>
+
+    <div id="vue-keyboard-event">
+
+        <h1>Keyboard Event</h1>
+        <label>Name:</label>
+        <input type="text" v-on:keyup.enter="logName"/><br><br>
+        <label>Age:</label>
+        <input type="text" v-on:keyup.alt.enter="logAge"/>
+
+    </div>
+
+    <div id="vue-2-way-data-binding">
+
+        <h1>2 WayData Binding</h1>
+        <label>Name:</label>
+        <input type="text" v-model="name"/><br><br>
+        <label>Age:</label>
+        <input type="text" v-model="age"/><br><br>
+        <span>{{name}}</span><br>
+        <span>{{age}}</span>
+
+    </div>
+
+    <div id="vue-computed-properties">
+
+        <h1>Computed Properties</h1>
+        <button v-on:click="a++">A to add</button>
+        <button v-on:click="b++">B to add</button> <br>
+        <p>A - {{a}}</p>
+        <p>b - {{b}}</p>
+        <p>Age + A = {{addToA}}</p>
+        <p>Age + B = {{addToB}}</p>
+
+    </div>
+
+    <div id="vue-dynamic-css">
+
+        <h1>Dynamic css</h1>
+        <h2>Example 1</h2>
+        <div id="butt" v-on:click="available = !available" v-bind:class="{available; available}">
+            <span>RUN</span>
+        </div>
+        <h2>Example 2</h2>
+
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
