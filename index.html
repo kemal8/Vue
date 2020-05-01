@@ -73,14 +73,84 @@
 
     </div>
 
-    <div id="vue-dynamic-css">
+    <div id="vue-conditions">
 
-        <h1>Dynamic css</h1>
-        <h2>Example 1</h2>
-        <div id="butt" v-on:click="available = !available" v-bind:class="{available; available}">
-            <span>RUN</span>
-        </div>
-        <h2>Example 2</h2>
+        <h1>Conditions</h1>
+        <button v-on:click="error =!error">Toggle Error</button>
+        <button v-on:click="success = !success">Toggle Success</button>
+        <p v-if="error">This is error message!</p>
+        <p v-else-if="success">This is success message!</p>
+
+    </div>
+
+    <div id="vue-looping-with-v-for">
+
+        <h1>Looping through list With v-for</h1>
+        <ul>
+            <li v-for="character in characters">{{character}}</li>
+        </ul>
+        <ul>
+            <li v-for="(character, index) in characters">{{index}} - {{character}}</li>
+        </ul>
+        <ul>
+            <li v-for="ninja in ninjas">{{ninja}}</li>
+        </ul>
+        <ul>
+            <li v-for="ninja in ninjas">{{ninja.name}} - {{ninja.age}}</li>
+        </ul>
+        <ul>
+            <li v-for="(ninja, index) in ninjas">{{index}}.{{ninja.name}} - {{ninja.age}}</li>
+        </ul>
+        <template v-for="(ninja, index) in ninjas">
+            <h3>{{index}}.{{ninja.name}}</h3>
+            <p>{{ninja.age}}</p>
+        </template> <br>
+        <template v-for="ninja in ninjas">
+            <div v-for="(val,key) in ninja">
+                <p>{{key}} - {{val}}</p>
+            </div>
+        </template>
+
+    </div>
+
+    <h1>Multiple Vue Instance</h1>
+    <div id="multiple-vue-instance-one">
+
+        <h2>{{title}}</h2>
+        <p>{{greet}}</p>
+
+    </div>
+
+    <div id="multiple-vue-instance-two">
+
+        <h2>{{title}}</h2>
+        <p>{{greet}}</p>
+        <button v-on:click="changeTitle">Change app one title</button>
+        <button v-on:click="resetTitle">Reset app one title</button>
+
+    </div>
+
+    <h1>Components</h1>
+    <div id="vue-components-one">
+
+        <h2>Vue app two</h2>
+        <greeting></greeting>
+
+    </div>
+
+    <div id="vue-components-two">
+
+        <h2>Vue app two</h2>
+        <greeting></greeting>
+
+    </div>
+
+    <div id="vue-refs">
+
+        <h2>Vue Referencing with $refs</h2>
+        <input type="text" ref="input" />
+        <button v-on:click="readRefs">Submit</button>
+        <p>My fav food is : {{output}}</p>
 
     </div>
 

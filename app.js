@@ -114,14 +114,161 @@ new Vue({
 
 new Vue({
 
-    el:'#vue-dynamic-css',
+    el:'#vue-conditions',
 
     data: {
-        available: true,
-        nearby: false,
+        error: false,
+        success: false
     },
 
     methods: {
+        
+    },
+
+    computed: {
+        
+    },
+
+});
+
+new Vue({
+
+    el:'#vue-looping-with-v-for',
+
+    data: {
+        name: 'jack',
+        characters:['kemal','hashi','bashi','yoshi'],
+        ninjas: [
+            {name: 'ruy', age:25},
+            {name: 'yoshi', age:35},
+            {name: 'ken', age:55},
+        ]
+    },
+
+    methods: {
+        
+    },
+
+    computed: {
+        
+    },
+
+});
+
+var one = new Vue({
+
+    el:'#multiple-vue-instance-one',
+
+    data: {
+        title: 'Vue app one'
+    },
+
+    methods: {
+        
+    },
+
+    computed: {
+        greet: function(){
+            return 'Hello im from vue app one ;)';
+        }
+    },
+
+});
+
+var two = new Vue({
+
+    el:'#multiple-vue-instance-two',
+
+    data: {
+        title: 'Vue app two'
+    },
+
+    methods: {
+        changeTitle: function (){
+            one.title = "Title changed";
+        },
+        resetTitle: function (){
+            one.title = "Vue app one";
+        }
+    },
+
+    computed: {
+        greet: function(){
+            return 'Hello im from vue app two ;)';
+        }
+    },
+
+});
+
+Vue.component('greeting',{
+    template:'<p>Hy! i am {{name}}. <button v-on:click="changeName">Change name</button> <button v-on:click="resetName">Reset name</button></p>',
+    data: function(){
+        return {
+            name: 'Yohani'
+        }
+    },
+    methods: {
+        changeName: function (){
+            this.name = 'Hashi';
+        },
+        resetName: function (){
+            this.name = 'Yohani';
+        }
+    }
+});
+
+new Vue({
+
+    el:'#vue-components-one',
+
+    data: {
+        title: 'Vue app one'
+    },
+
+    methods: {
+        
+    },
+
+    computed: {
+        
+    },
+
+});
+
+new Vue({
+
+    el:'#vue-components-two',
+
+    data: {
+        title: 'Vue app two'
+    },
+
+    methods: {
+        
+    },
+
+    computed: {
+        
+    },
+
+});
+
+new Vue({
+
+    el:'#vue-refs',
+
+    data: {
+        output: 'your fav food'
+    },
+
+    methods: {
+       readRefs: function (){
+           console.log(this.$refs.input.value);
+           this.output = this.$refs.input.value;
+       } 
+    },
+
+    computed: {
         
     },
 
